@@ -1,0 +1,11 @@
+{
+  "name": "Lunari-esque Greeter Bot",
+  "version": "1.0.0",
+  "description": "A Discord Bot created for the express purpose of greeting new server members, so that Lunari doesn't have to",
+  "main": "app.js",
+  "author": "Kretolus",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "winston": "^3.0.0-rc1"
+  }
+}
