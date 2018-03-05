@@ -3,6 +3,7 @@
  */
 module.exports = {
     name: 'reset',
+    owner_only: true,
     description: 'Resets the bot.',
     execute(client, message) {
         message.guild.fetchMember(client.user).then((member) => {

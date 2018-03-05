@@ -46,6 +46,8 @@ client.on('message', message => {
     if (!client.commands.has(commandName)) return;
     const command = client.commands.get(commandName);
 
+    if (command.owner_only && message.author.id !== owner) return;
+
     // check if arguments are required, and if so if they were provided
     if (command.args && !args.length) {
         return message.channel.send(`You didn't provide any arguments, ${message.author}!`);

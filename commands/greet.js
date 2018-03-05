@@ -3,6 +3,7 @@
  */
 module.exports = {
     name: 'greet',
+    owner_only: true,
     description: 'Deploys a special greeting.',
     execute(client, message) {
         message.guild.fetchMember(client.user).then((member) => {
