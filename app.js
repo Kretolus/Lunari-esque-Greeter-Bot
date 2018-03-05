@@ -2,7 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const winston = require('winston');
 
-const { token, owner, prefix, name, } = require("./config.json"); // import config
+const { token, owner, prefix } = require("./config.json"); // import config
 const commandFiles = fs.readdirSync('./commands'); // import command files
 
 const client = new Discord.Client();
@@ -53,10 +53,13 @@ client.on('message', message => {
 
     // command execution
     try {
-        command.execute(message, args);
+        command.execute(client, message, args);
     }
     catch (error) {
-        console.error(error);
+        logger.log({
+            level: 'error',
+            message: error
+        });
         message.reply('there was an error trying to execute that command!');
     }
 });
