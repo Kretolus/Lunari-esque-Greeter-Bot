@@ -61,4 +61,26 @@ client.on('message', message => {
     }
 });
 
+client.on('guildMemberAdd', member => {
+    // get the general channel:
+    const general = member.guild.channels.find('name', 'general');
+    // do nothing if the channel wasn't found on this server
+    if (!general) return;
+
+    // find the 'Trial' role to be given to the new member
+    const trial = member.guild.roles.find('name', 'Trial');
+    // do nothing if the role wasn't found on this server
+    if (!trial) return;
+
+    // find channels to be mentioned in the greeting
+    const announcements = member.guild.channels.find('name', 'announcements');
+    const introductions = member.guild.channels.find('name', 'introductions');
+
+    member.addRole(trial).then((member) => {
+        // Send the greeting message message, mentioning the member
+        general.send(
+            `Welcome ${member}! Be sure to read through ${announcements} and drop some info in ${introductions}`);
+    });
+});
+
 client.login(token); // client API login
