@@ -10,4 +10,8 @@ node_modules/
 # dotenv environment variables file
 .env
 
+#config.json to prevent accidental bot token leak
+#config.json
 
+#logs
+logs/*.log

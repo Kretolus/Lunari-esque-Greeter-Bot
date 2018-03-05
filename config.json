@@ -1,3 +1,6 @@
 {
-  "token": "YOUR-BOT-TOKEN-HERE"
+  "token": "YOUR-BOT-TOKEN-HERE",
+  "owner": "YOUR-ID",
+  "prefix": "#!",
+  "name": "Lunari-esque Greeter Bot"
 }
