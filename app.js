@@ -93,7 +93,7 @@ client.on('message', message => {
 
 client.on('guildMemberAdd', member => {
     // get the general channel:
-    const general = member.guild.channels.find('name', 'general');
+    const general = member.guild.channels.find('name', 'general_chat');
     // do nothing if the channel wasn't found on this server
     if (!general) return;
 
