@@ -4,8 +4,9 @@
 module.exports = {
     name: 'greet',
     owner_only: true,
+    cooldown: 601,
     description: 'Deploys a special greeting.',
-    execute(client, message) {
+    execute(logger, client, message) {
         message.guild.fetchMember(client.user).then((member) => {
             member.setNickname('General Kenobi')
                 .then((member) => {
@@ -14,21 +15,13 @@ module.exports = {
                             message.channel.send('Hello there!');
                             member.setNickname('Lunari-esque Greeter Bot')
                                 .then((member) => {})
-                                .catch((error) => {
-                                    throw error;
-                                });
+                                .catch(logger.log);
                             user.setAvatar('./icons/bot-img.png')
                                 .then((user) => {})
-                                .catch((error) => {
-                                    throw error;
-                                });
+                                .catch(logger.log);
                         })
-                        .catch((error) => {
-                            throw error;
-                        });
-                }).catch((error) => {
-                    throw error;
-                });
+                        .catch(logger.log);
+                }).catch(logger.log);
         });
     },
 };
