@@ -5,17 +5,23 @@ module.exports = {
     name: 'reset',
     owner_only: true,
     description: 'Resets the bot.',
-    execute(client, message) {
+    execute(logger, client, message) {
         message.guild.fetchMember(client.user).then((member) => {
             member.setNickname('Lunari-esque Greeter Bot')
                 .then((member) => {
                     client.user.setAvatar('./icons/bot-img.png')
                         .then((user) => {})
                         .catch((error) => {
-                            throw error;
+                            logger.log({
+                                level: "error",
+                                message: error
+                            });
                         });
                 }).catch((error) => {
-                    throw error;
+                    logger.log({
+                        level: "error",
+                        message: error
+                    });
                 });
         });
     },
